@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog CRUD Endpoints</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Blog CRUD Endpoints</h1>
+    <table class="table-auto">
+      <tr class="bg-gray-700 text-white">
+        <th class="px-4 py-2">Endpoint</th>
+        <th class="px-4 py-2">Method</th>
+        <th class="px-4 py-2">Description</th>
+      </tr>
+      <tr class="bg-gray-200">
+        <td class="px-4 py-2">/</td>
+        <td class="px-4 py-2">GET</td>
+        <td class="px-4 py-2">Home page</td>
+      </tr>
+      <tr class="bg-gray-200">
+        <td class="px-4 py-2">/blogs</td>
+        <td class="px-4 py-2">GET</td>
+        <td class="px-4 py-2">Get all blog posts</td>
+      </tr>
+      <tr class="bg-gray-200">
+        <td class="px-4 py-2">/blogs/create</td>
+        <td class="px-4 py-2">GET</td>
+        <td class="px-4 py-2">Render create form</td>
+      </tr>
+      <tr class="bg-gray-200">
+        <td class="px-4 py-2">/blogs</td>
+        <td class="px-4 py-2">POST</td>
+        <td class="px-4 py-2">Create a new blog post</td>
+      </tr>
+      <tr class="bg-gray-200">
+        <td class="px-4 py-2">/blogs/:id</td>
+        <td class="px-4 py-2">GET</td>
+        <td class="px-4 py-2">Get a single blog post</td>
+      </tr>
+      <tr class="bg-gray-200">
+        <td class="px-4 py-2">/blogs/:id/update</td>
+        <td class="px-4 py-2">GET</td>
+        <td class="px-4 py-2">Render update form</td>
+      </tr>
+      <tr class="bg-gray-200">
+        <td class="px-4 py-2">/blogs/:id</td>
+        <td class="px-4 py-2">PUT</td>
+        <td class="px-4 py-2">Update a blog post</td>
+      </tr>
+      <tr class="bg-gray-200">
+        <td class="px-4 py-2">/blogs/:id/delete</td>
+        <td class="px-4 py-2">GET</td>
+        <td class="px-4 py-2">Render delete form</td>
+      </tr>
+      <tr class="bg-gray-200">
+        <td class="px-4 py-2">/blogs/:id</td>
+        <td class="px-4 py-2">DELETE</td>
+        <td class="px-4 py-2">Delete a blog post</td>
+      </tr>
+    </table>
+    <a href="/blogs"><button class="absolute bg-green-600 text-white text-bold py-2 px-4">See All Blogs</button></a>
+
+  </body>
+</html>
+

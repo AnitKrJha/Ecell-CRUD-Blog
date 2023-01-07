@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create a new blog post</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-100 h-screen flex items-center justify-center">
+    <form class="w-full max-w-lg m-4" action="/blogs" method="post">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="title">
+            Title
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="title" type="text" name="title" required>
+          <p class="text-gray-600 text-xs italic">Please enter a title for the blog post</p>
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="content">
+            Content
+          </label>
+          <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="content" name="content"></textarea>
+          <p class="text-gray-600 text-xs italic">Please enter the content for the blog post</p>
+       
+
+      <input type="submit" value="Submit" class="bg-blue-800 text-white px-4 py-2">
+    </form>
+  </body>
+</html>
