@@ -1,7 +1,16 @@
 {
+  "name": "ECell Crud Blog",
+  "version": "1.0.0",
+  "description": "Ecell Project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "method-override": "^3.0.0"
-  }
+  },
+  "author": "Anit Jha",
+  "license": "MIT"
 }
