@@ -1,5 +1,6 @@
 const express = require("express");
 const methodoverride = require("method-override");
+const jwt=require('jsonwebtoken')
 const blogData = require("./data");
 const app = express();
 
@@ -36,11 +37,15 @@ app.get("/blogs/:id/delete", (req, res) => {
   res.render("delete", { blog: blog });
 });
 
+app.get('/login',(req,res)=>{
+  res.render("login")
+})
+
 // -----------------------------Post Routes---------------------------------------------
 
 // Create a new blog
 
-app.post("/blogs", (req, res) => {
+app.post("/blogs",authenticateToken, (req, res) => {
   const title = req.body.title;
   const content = req.body.content;
 
@@ -51,7 +56,7 @@ app.post("/blogs", (req, res) => {
   res.redirect("/blogs");
 });
 
-app.put("/blogs/:id", (req, res) => {
+app.put("/blogs/:id",authenticateToken, (req, res) => {
   const blog = blogData.find((b) => b.id == req.params.id);
 
   blog.title = req.body.title;
@@ -60,13 +65,46 @@ app.put("/blogs/:id", (req, res) => {
   res.redirect("/blogs");
 });
 
-app.delete("/blogs/:id", (req, res) => {
+app.delete("/blogs/:id",authenticateToken, (req, res) => {
   const index = blogData.findIndex((b) => b.id == req.params.id);
 
   blogData.splice(index, 1);
 
   res.redirect("/blogs");
 });
+
+
+app.post('/login', function(req, res) {
+  // get the user data from request body
+  const {username, password} = req.body;
+
+  // check if username and password match hardcoded values
+  if (username === 'admin' && password === 'password') {
+    // create a token and sign it
+    const token = jwt.sign({username: username}, 'secret_key');
+    res.json({token});
+  } else {
+    res.status(401).json({message: 'Invalid username or password'});
+  }
+});
+
+//--------------------------------authentication middleware---------------------------------
+
+function authenticateToken(req, res, next) {
+  // get the token from request headers
+  console.log(req.headers);
+  const authHeader = req.headers['authorization']
+  const token = authHeader && authHeader.split(' ')[1]
+
+  if (token == null) return res.sendStatus(401) // if there isn't any token
+
+  jwt.verify(token, 'secret_key', (err, user) => {
+    if (err) return res.sendStatus(403)
+    req.user = user
+    next()
+  })
+}
+
 
 //-------------------------------------APP listen-------------------------------
 
